@@ -33,7 +33,7 @@ declare -A SPECIES=(
 
 # Downsampling strategies
 declare -A STRATEGIES=(
-  [DROP_RGS]="Prefer dropping read groups over downsampling reads"
+  [DROP_RG]="Prefer dropping read groups over downsampling reads"
 )
 
 stderr() {
@@ -54,12 +54,12 @@ usage() {
   done)"
 
   cat <<-EOF
-	Usage: ${PROGNAME} --coverage COVERAGE [OPTIONS] INPUT
+	Usage: ${PROGNAME} [CONSTRAINTS] [OPTIONS] INPUT
 	       ${PROGNAME} (-V | --version)
 	       ${PROGNAME} (-h | --help)
 	
-	Downsample INPUT alignment data, as a SAM, BAM or CRAM file, to the
-	specified constraints.
+	Downsample INPUT alignment data, as a SAM, BAM or CRAM file, to one or
+	more specified constraints.
 	
 	Coverage Constraints:
 	
@@ -83,7 +83,7 @@ usage() {
 	
 	Downsampling Options:
 	
-	  --strategy STRATEGY        Downsampling strategy [default: DROP_RGS]
+	  --strategy STRATEGY        Downsampling strategy [default: DROP_RG]
 	  --tolerance TOLERANCE      Allowed percentage difference in output
 	                             coverage from target [default: 10]
 	  --seed SEED                Random seed [default: 0]

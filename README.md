@@ -10,12 +10,13 @@ constraints.
 
 # Usage
 
-    lofi --coverage COVERAGE
-         [--species SPECIES]
+    lofi [--coverage COVERAGE] [--species SPECIES]
          [--read-groups RG_RANGE] [--rg-coverage RG_COVERAGE] [--keep-rg RG]
          [--strategy STRATEGY] [--tolerance TOLERANCE] [--seed SEED]
          [--prefix PREFIX] [--no-recombine]
          INPUT
+
+At least one constraint must be specified.
 
 ## Coverage Constraints
 
@@ -42,14 +43,13 @@ The `RG_RANGE` takes the format `MIN-`, `-MAX`, `MIN-MAX` or `EXACT`.
 
 ## Downsampling Options
 
-    --strategy STRATEGY        Downsampling strategy
+    --strategy STRATEGY        Downsampling strategy [default: DROP_RG]
     --tolerance TOLERANCE      Allowed percentage difference in output
                                coverage from target [default: 10]
     --seed SEED                Random seed [default: 0]
 
 Supported `STRATEGY` values:
-* `DROP_RGS` Prefer dropping read groups over downsampling reads
-  (default)
+* `DROP_RG`: Prefer dropping read groups over downsampling reads
 
 ## Output Options
 
