@@ -26,7 +26,7 @@ VERSION="0.0.0"
 
 # Genome sizes of common species
 declare -A SPECIES=(
-  [human]=3000000000
+  [human]=3554996726
 )
 
 # Downsampling strategies
