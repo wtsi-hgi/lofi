@@ -27,6 +27,8 @@ VERSION="0.0.0"
 # Genome sizes of common species
 declare -A SPECIES=(
   [human]=3554996726
+  [mouse]=3482409794
+  [zebrafish]=1464443456
 )
 
 # Downsampling strategies

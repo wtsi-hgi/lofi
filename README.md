@@ -29,6 +29,8 @@ the species genome size.
 
 Supported `SPECIES` values:
 * `human`
+* `mouse`
+* `zebrafish`
 
 ## Read Group Constraints
 
