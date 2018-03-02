@@ -80,6 +80,7 @@ usage() {
 	  --strategy STRATEGY        Downsampling strategy
 	  --tolerance TOLERANCE      Allowed percentage difference in output
 	                             coverage from target [default: 10]
+	  --seed SEED                Random seed [default: 0]
 	
 	Supported strategies: ${!STRATEGIES[@]}
 	

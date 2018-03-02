@@ -13,7 +13,7 @@ constraints.
     lofi --coverage COVERAGE
          [--species SPECIES]
          [--read-groups RG_RANGE] [--rg-coverage RG_COVERAGE] [--keep-rg RG]
-         [--strategy STRATEGY] [--tolerance TOLERANCE]
+         [--strategy STRATEGY] [--tolerance TOLERANCE] [--seed SEED]
          [--prefix PREFIX] [--no-recombine]
          INPUT
 
@@ -43,6 +43,7 @@ The `RG_RANGE` takes the format `MIN-`, `-MAX`, `MIN-MAX` or `EXACT`.
     --strategy STRATEGY        Downsampling strategy
     --tolerance TOLERANCE      Allowed percentage difference in output
                                coverage from target [default: 10]
+    --seed SEED                Random seed [default: 0]
 
 Supported `STRATEGY` values:
 * `DROP_RGS` Prefer dropping read groups over downsampling reads
