@@ -47,6 +47,10 @@ stderr() {
 }
 
 usage() {
+  local strategy_help="$(for s in "${!STRATEGIES[@]}"; do
+    echo "${s}: ${STRATEGIES[${s}]}" | fmt -72
+  done)"
+
   cat <<-EOF
 	Usage: ${PROGNAME} --coverage COVERAGE [OPTIONS] INPUT
 	       ${PROGNAME} (-V | --version)
@@ -77,12 +81,13 @@ usage() {
 	
 	Downsampling Options:
 	
-	  --strategy STRATEGY        Downsampling strategy
+	  --strategy STRATEGY        Downsampling strategy [default: DROP_RGS]
 	  --tolerance TOLERANCE      Allowed percentage difference in output
 	                             coverage from target [default: 10]
 	  --seed SEED                Random seed [default: 0]
 	
-	Supported strategies: ${!STRATEGIES[@]}
+	Supported strategies:
+	${strategy_help}
 	
 	Output Options:
 	
