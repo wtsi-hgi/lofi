@@ -102,3 +102,14 @@ usage() {
 	location, or an absolute path.
 	EOF
 }
+
+version() {
+  cat <<-EOF
+	${PROGNAME} v${VERSION}
+	Copyright (c) 2018 Genome Research Ltd.
+	
+	This program comes with ABSOLUTELY NO WARRANTY. This is free software,
+	which you are welcome to redistribute under the conditions of the GNU
+	Public License v3, or later.
+	EOF
+}
