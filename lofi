@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# Lo-Fi
+# Alignment data downsampler
+
+# Author: Christopher Harrison <ch12@sanger.ac.uk>
+
+# Copyright (c) 2018 Genome Research Ltd.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+BINARY="$0"
+PROGNAME="$(basename "${BINARY}")"
+VERSION="0.0.0"
+
+# Genome sizes of common species
+declare -A SPECIES=(
+  [human]=3000000000
+)
+
+# Downsampling strategies
+declare -A STRATEGIES=(
+  [DROP_RGS]="Prefer dropping read groups over downsampling reads"
+)
+
+stderr() {
+  # Echo to stderr
+  local message="$*"
+
+  if [[ -t 2 ]]; then
+    # Use ANSI red if stderr is a TTY
+    message="\033[0;31m${message}\033[0m"
+  fi
+
+  >&2 echo -e "${message}"
+}
+
+usage() {
+  cat <<-EOF
+	Usage: ${PROGNAME} --coverage COVERAGE [OPTIONS] INPUT
+	       ${PROGNAME} (-V | --version)
+	       ${PROGNAME} (-h | --help)
+	
+	Downsample INPUT alignment data, as a SAM, BAM or CRAM file, to the
+	specified constraints.
+	
+	Coverage Constraints:
+	
+	  --coverage COVERAGE        The overall coverage of the output
+	  --rg-coverage RG_COVERAGE  The minimum coverage in output read groups
+	
+	COVERAGE and RG_COVERAGE are specified as the number of base pairs,
+	optionally suffixed with k, M or G. If the --species option is used, an
+	x suffix may also be used, indicating a coverage relative to the species
+	genome size.
+	
+	Supported species: ${!SPECIES[@]}
+	
+	Read Group Constraints:
+	
+	  --read-groups RG_RANGE     Read groups in the output
+	  --keep-rg RG               Do not drop the read group with the given
+	                             ID; this can be specified multiple times
+	
+	The RG_RANGE takes the format "MIN-", "-MAX", "MIN-MAX" or "EXACT".
+	
+	Downsampling Options:
+	
+	  --strategy STRATEGY        Downsampling strategy
+	  --tolerance TOLERANCE      Allowed percentage difference in output
+	                             coverage from target [default: 10]
+	
+	Supported strategies: ${!STRATEGIES[@]}
+	
+	Output Options:
+	
+	  --prefix PREFIX            Output path prefix
+	  --no-recombine             Don't recombine individual read groups
+	
+	The output file(s) will be named [PREFIX]INPUT[.READ_GROUP].downsampled,
+	where READ_GROUP will be the read group ID if --no-recombine is
+	specified. The PREFIX, if specified, is relative to the INPUT's
+	location, or an absolute path.
+	EOF
+}

@@ -22,10 +22,10 @@ constraints.
     --coverage COVERAGE        The overall coverage of the output
     --rg-coverage RG_COVERAGE  The minimum coverage in output read groups
 
-`COVERAGE` and `RG_COVERAGE` are the specified as the number of base
-pairs, optionally suffixed with `k`, `M` or `G`. If the `--species`
-option is used, an `x` suffix may also be used, indicating a coverage
-relative to the species genome size.
+`COVERAGE` and `RG_COVERAGE` are specified as the number of base pairs,
+optionally suffixed with `k`, `M` or `G`. If the `--species` option is
+used, an `x` suffix may also be used, indicating a coverage relative to
+the species genome size.
 
 Supported `SPECIES` values:
 * `human`
@@ -46,7 +46,7 @@ The `RG_RANGE` takes the format `MIN-`, `-MAX`, `MIN-MAX` or `EXACT`.
 
 Supported `STRATEGY` values:
 * `DROP_RGS` Prefer dropping read groups over downsampling reads
-  (default).
+  (default)
 
 ## Output Options
 
