@@ -58,8 +58,8 @@ usage() {
 	       ${PROGNAME} (-V | --version)
 	       ${PROGNAME} (-h | --help)
 	
-	Downsample INPUT alignment data, as a SAM, BAM or CRAM file, to one or
-	more specified constraints.
+	Downsample INPUT sequence alignment data, as a SAM, BAM or CRAM file, to
+	one or more specified constraints.
 	
 	Coverage Constraints:
 	
@@ -69,7 +69,7 @@ usage() {
 	COVERAGE and RG_COVERAGE are specified as the number of base pairs,
 	optionally suffixed with k, M or G. If the --species option is used, an
 	x suffix may also be used, indicating a coverage relative to the species
-	genome size.
+	genome size (presuming your input is WGS data).
 	
 	Supported species: ${!SPECIES[@]}
 	

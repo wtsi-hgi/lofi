@@ -1,7 +1,7 @@
 # Lo-Fi
 
-Downsample alignment data (SAM, BAM or CRAM files) given specific
-constraints.
+Downsample sequence alignment data (SAM, BAM or CRAM files) given
+specific constraints.
 
 # Requirements
 
@@ -26,7 +26,8 @@ At least one constraint must be specified.
 `COVERAGE` and `RG_COVERAGE` are specified as the number of base pairs,
 optionally suffixed with `k`, `M` or `G`. If the `--species` option is
 used, an `x` suffix may also be used, indicating a coverage relative to
-the species genome size.
+the species genome size (under the presumption that your input is whole
+genome sequence data).
 
 Supported `SPECIES` values:
 * `human`
